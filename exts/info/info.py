@@ -55,7 +55,7 @@ class Info(commands.Cog):
             title="About XnonBot",
             color=constants.COLOR,
             description="XnonBot is a general-purpose discord bot developed by XnonXte.",
-            url="https://github.com/XnonXte/XnonBot",
+            url="https://github.com/XnonXte/XnonBot-Rewritten",
         )
         help_embed.add_field(name="Commands", value=MAIN_COMMANDS)
         help_embed.add_field(
