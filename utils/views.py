@@ -8,5 +8,7 @@ class HelpViews(discord.ui.View):
             discord.ui.Button(label="Discord", url="https://discord.gg/hHYfnqa6zS"),
         )
         self.add_item(
-            discord.ui.Button(label="GitHub", url="https://github.com/XnonXte/XnonBot")
+            discord.ui.Button(
+                label="GitHub", url="https://github.com/XnonXte/XnonBot-Rewritten"
+            )
         )
