@@ -1,24 +1,7 @@
 import json
 
-# Example JSON file.
-# {
-# "1103578001318346812": {
-#     "1125316343399461005": {
-#         discord.PartialEmoji(name="🟢"): 1125311410038120468
-#     },
-#     "1125316367353122828": {
-#         discord.PartialEmoji(name="🟡"): 1125311371794456717
-#     },
-#     "1125316376324751391": {
-#         discord.PartialEmoji(name="🔴"): 1125310842259382383
-#     },
-# },
-# }
-
 
 class ReactionRoles:
-    """Reaction roles related functions."""
-
     def __init__(self, filepath):
         self.filepath = filepath
         self.data = {}
@@ -33,8 +16,6 @@ class ReactionRoles:
             json.dump(self.data, file)
 
     def add_reaction_role(self, guild_id, message_id, partial_emoji, role_id):
-        """Adding a reaction role to a message."""
-        # This ensures everything is in the right data type.
         guild_id, message_id, partial_emoji = (
             str(guild_id),
             str(message_id),

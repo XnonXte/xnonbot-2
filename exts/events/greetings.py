@@ -3,7 +3,7 @@ from datetime import datetime
 import discord
 from discord.ext import commands
 
-from utils import constants
+from const import COLOR
 
 
 class Greeting(commands.Cog):
@@ -12,13 +12,12 @@ class Greeting(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
-        """Greeting a new user."""
         guild = member.guild
         if guild.system_channel is not None:
             welcome_embed = discord.Embed(
                 title=None,
                 description=f"Welcome {member.name}! Enjoy your stay here.",
-                color=member.accent_color or constants.COLOR,
+                color=member.accent_color or COLOR,
             )
             welcome_embed.set_author(name=member.name, icon_url=member.avatar.url)
             welcome_embed.set_thumbnail(url=member.avatar.url)

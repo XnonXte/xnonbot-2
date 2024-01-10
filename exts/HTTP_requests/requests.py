@@ -3,8 +3,9 @@ from typing import Literal
 import discord
 from discord import app_commands
 from discord.ext import commands
+from const import COLOR
 
-from utils import constants, get_requests
+from utils import get_requests
 
 
 class Requests(commands.Cog):
@@ -18,14 +19,14 @@ class Requests(commands.Cog):
     @req.command(description="Returns a picture of dog.")
     async def dog(self, ctx):
         dog = get_requests.Requests.get_dog_pic()
-        dog_embed = discord.Embed(title="Bark! 🐶", color=constants.COLOR)
+        dog_embed = discord.Embed(title="Bark! 🐶", color=COLOR)
         dog_embed.set_image(url=dog)
         await ctx.send(embed=dog_embed)
 
     @req.command(description="Returns a picture of cat.")
     async def cat(self, ctx):
         cat = get_requests.Requests.get_cat_pic()
-        cat_embed = discord.Embed(title="Meow! 🐱", color=constants.COLOR)
+        cat_embed = discord.Embed(title="Meow! 🐱", color=COLOR)
         cat_embed.set_image(url=cat)
         await ctx.send(embed=cat_embed)
 
@@ -35,7 +36,7 @@ class Requests(commands.Cog):
         quote_embed = discord.Embed(
             title=None,
             description=f"{quote[1]} -{quote[0]}.",
-            color=constants.COLOR,
+            color=COLOR,
         )
         await ctx.send(embed=quote_embed)
 
@@ -75,9 +76,7 @@ class Requests(commands.Cog):
         ],
     ):
         waifu = get_requests.Requests.get_waifu_pic(category)
-        waifu_embed = discord.Embed(
-            title=f"{category} Generated", color=constants.COLOR
-        )
+        waifu_embed = discord.Embed(title=f"{category} Generated", color=COLOR)
         waifu_embed.set_image(url=waifu)
         await ctx.send(embed=waifu_embed)
 
@@ -87,14 +86,14 @@ class Requests(commands.Cog):
         dad_joke_embed = discord.Embed(
             title=None,
             description=dad_joke,
-            color=constants.COLOR,
+            color=COLOR,
         )
         await ctx.send(embed=dad_joke_embed)
 
     @req.command(description="Gets a random would you rather question.")
     async def wyr(self, ctx):
         wyr = get_requests.Requests.get_would_you_rather()
-        wyr_embed = discord.Embed(title=None, description=wyr, color=constants.COLOR)
+        wyr_embed = discord.Embed(title=None, description=wyr, color=COLOR)
         await ctx.send(embed=wyr_embed)
 
 

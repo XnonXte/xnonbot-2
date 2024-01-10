@@ -5,7 +5,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-from utils import constants
+from const import COLOR
 
 
 class Moderation(commands.Cog):
@@ -19,7 +19,7 @@ class Moderation(commands.Cog):
     @mod_command.command(description="Adds a role to a user.")
     @commands.has_permissions(manage_roles=True)
     @app_commands.describe(member="Member to assign the role to.", role="Role to add.")
-    async def addroleuser(self, ctx, member: discord.Member, role: discord.Role):
+    async def addrole(self, ctx, member: discord.Member, role: discord.Role):
         await member.add_roles(role)
         await ctx.send(f"{member.mention} has been given the {role.name} role.")
 
@@ -28,7 +28,7 @@ class Moderation(commands.Cog):
     @app_commands.describe(
         member="Member to remove the role to.", role="Role to remove."
     )
-    async def rmroleuser(self, ctx, member: discord.Member, role: discord.Role):
+    async def rmrole(self, ctx, member: discord.Member, role: discord.Role):
         await member.remove_roles(role)
         await ctx.send(f"{member.mention} no longer has the {role.name} role.")
 
@@ -109,7 +109,7 @@ class Moderation(commands.Cog):
         success_embed = discord.Embed(
             title="Success!",
             description=f"Successfully created the role **{role.name}** in {ctx.guild.name}.",
-            color=constants.COLOR,
+            color=COLOR,
         )
 
         await ctx.send(embed=success_embed)
@@ -158,7 +158,7 @@ class Moderation(commands.Cog):
         success_embed = discord.Embed(
             title="Success!",
             description=f"Successfully created the channel **{channel.name}** in {ctx.guild.name}.",
-            color=constants.COLOR,
+            color=COLOR,
         )
 
         await ctx.send(embed=success_embed)
@@ -209,7 +209,7 @@ class Moderation(commands.Cog):
         success_embed = discord.Embed(
             title="Success!",
             description=f"Successfully created the voice channel **{vc_channel.name}** in {ctx.guild.name}.",
-            color=constants.COLOR,
+            color=COLOR,
         )
 
         await ctx.send(embed=success_embed)
@@ -244,7 +244,7 @@ class Moderation(commands.Cog):
         success_embed = discord.Embed(
             title="Success!",
             description=f"Successfully created the category **{category.name}** in {ctx.guild.name}.",
-            color=constants.COLOR,
+            color=COLOR,
         )
 
         await ctx.send(embed=success_embed)
@@ -298,7 +298,7 @@ class Moderation(commands.Cog):
         success_embed = discord.Embed(
             title="Success!",
             description=f"Successfully banned {user.name} from {ctx.guild.name} with the reason: {reason or '-'}.",
-            color=constants.COLOR,
+            color=COLOR,
         )
         success_embed.set_thumbnail(url=user.avatar.url)
         success_embed.set_author(name=user.name, icon_url=user.avatar.url)
@@ -327,7 +327,7 @@ class Moderation(commands.Cog):
         bans_embed = discord.Embed(
             title=f"Banned Users in {ctx.guild.name}",
             description=bans_description or "There aren't any :)",
-            color=constants.COLOR,
+            color=COLOR,
         )
         bans_embed.set_footer(
             text=f"Server ID: {ctx.guild.id} - Today at {datetime.now().strftime('%I:%M %p')}",

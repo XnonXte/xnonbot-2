@@ -1,6 +1,7 @@
 from typing import Literal
 
 from discord.ext import commands
+from discord import app_commands
 
 
 class Config(commands.Cog):
@@ -15,12 +16,12 @@ class Config(commands.Cog):
     async def ping(self, ctx):
         await ctx.send(f"Pong! My latency is `{round(self.bot.latency * 100, 2)}`ms")
 
-    @cfg.command()
+    @cfg.command(description="Command to sync all slash commands.")
+    @app_commands.describe(option="The scope for the bot to sync.")
     @commands.is_owner()
     async def sync(
         self, ctx: commands.Context, option: Literal["local", "clear", "global"]
     ):
-        """Syncs slash commands into tree."""
         if option == "local":
             synced = await ctx.bot.tree.sync(guild=ctx.guild)
         elif option == "clear":

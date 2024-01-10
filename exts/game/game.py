@@ -7,7 +7,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-from utils import constants
+from const import COLOR
 
 
 class Game(commands.Cog):
@@ -43,13 +43,13 @@ class Game(commands.Cog):
         rps_embed = discord.Embed(
             title="Rock Paper Scissors... Shoot!",
             description=f"Bot chooses ***{bot_choice.capitalize()}***\nUser chooses ***{user_choice.capitalize()}***\n\n{rps_output}",
-            color=constants.COLOR,
+            color=COLOR,
         )
         await ctx.send(embed=rps_embed)
 
     @game.command(description="Guess a number from a given limit.")
     @app_commands.describe(limit="Enter a limit (default to 30).")
-    async def guessnumber(self, ctx, limit: Optional[int] = 30):
+    async def guess(self, ctx, limit: Optional[int] = 30):
         await ctx.send(f"Guess a number from 1 to {limit}")
 
         random_number = random.randint(1, limit)
