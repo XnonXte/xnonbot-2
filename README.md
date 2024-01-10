@@ -1,4 +1,4 @@
-# XnonBot Rewriten
+# XnonBot 2
 
 This is a version of XnonBot that has been rewritten from the ground up, using cogs, hybrid commands, and everything else you can imagine! It can now moderate members with a couple of moderator commands. XnonBot is a discord bot written in Python with the [discord.py](https://github.com/rapptz/discord.py) library.
 
